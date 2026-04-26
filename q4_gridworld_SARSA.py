@@ -7,9 +7,7 @@ Matches the textbook example: special states A=(0,1)→A'=(4,1)+10
 import numpy as np
 import random
 
-# ──────────────────────────────────────────────
-# Gridworld definition
-# ──────────────────────────────────────────────
+
 class Gridworld:
     ACTIONS      = ['north', 'south', 'east', 'west']
     ACTION_DELTA = {'north': (-1, 0), 'south': (1, 0),
@@ -52,9 +50,6 @@ class Gridworld:
         return [(r, c) for r in range(self.rows) for c in range(self.cols)]
 
 
-# ──────────────────────────────────────────────
-# SARSA
-# ──────────────────────────────────────────────
 def sarsa(env, gamma=0.9, epsilon=0.1, alpha=0.2, episodes=5000, steps=5000):
     # Q-table initialised to zero
     Q = {(s, a): 0.0
@@ -90,9 +85,6 @@ def sarsa(env, gamma=0.9, epsilon=0.1, alpha=0.2, episodes=5000, steps=5000):
     return Q
 
 
-# ──────────────────────────────────────────────
-# Extract value function & policy
-# ──────────────────────────────────────────────
 def extract_V_and_policy(env, Q):
     V      = {}
     policy = {}
@@ -104,9 +96,6 @@ def extract_V_and_policy(env, Q):
     return V, policy
 
 
-# ──────────────────────────────────────────────
-# Pretty print
-# ──────────────────────────────────────────────
 def print_V(env, V):
     print("\nOptimal Value Function:")
     for r in range(env.rows):
@@ -123,9 +112,6 @@ def print_policy(env, policy):
         print("  " + "  ".join(env.ARROW[policy[(r,c)]] for c in range(env.cols)))
 
 
-# ──────────────────────────────────────────────
-# Matplotlib visualisation
-# ──────────────────────────────────────────────
 def visualise(env, V, policy, filename="gridworld_solution.png"):
     import matplotlib.pyplot as plt
     import matplotlib.colors as mcolors
@@ -180,9 +166,8 @@ def visualise(env, V, policy, filename="gridworld_solution.png"):
     print(f"[Saved] {filename}")
 
 
-# ──────────────────────────────────────────────
 # Main
-# ──────────────────────────────────────────────
+
 if __name__ == "__main__":
     env = Gridworld()
 
