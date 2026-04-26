@@ -2,9 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import copy
 
-# ──────────────────────────────────────────────
-# Telecom CSP Solver
-# ──────────────────────────────────────────────
+
 class Telecom_CSP_Solver:
     def __init__(self, mountains=None, grid_size=10, num_towers=8):
         self.grid_size  = grid_size
@@ -18,7 +16,6 @@ class Telecom_CSP_Solver:
                              if (r, c) not in self.mountains]
         self.initial_domains = {t: list(all_cells) for t in self.towers}
 
-    # ── constraint check ──────────────────────
     def is_consistent(self, assignment, cell):
         """Return True if placing a new tower at 'cell' is consistent with existing assignment."""
         r, c = cell
@@ -32,7 +29,6 @@ class Telecom_CSP_Solver:
                 return False
         return True
 
-    # ── forward checking ──────────────────────
     def forward_check(self, domains, tower, cell):
         """Prune domains of unassigned towers after placing tower at cell."""
         new_domains = copy.deepcopy(domains)
@@ -51,13 +47,11 @@ class Telecom_CSP_Solver:
                     return None   # domain wipe-out
         return new_domains
 
-    # ── MRV heuristic ─────────────────────────
     def select_unassigned(self, assignment, domains):
         """Choose the tower with the fewest remaining valid cells (MRV)."""
         unassigned = [t for t in self.towers if t not in assignment]
         return min(unassigned, key=lambda t: len(domains[t]))
 
-    # ── backtracking search ───────────────────
     def backtrack(self, assignment, domains):
         if len(assignment) == self.num_towers:
             return assignment
@@ -81,12 +75,10 @@ class Telecom_CSP_Solver:
 
         return None
 
-    # ── solve ─────────────────────────────────
     def solve(self):
         solution = self.backtrack({}, copy.deepcopy(self.initial_domains))
         return solution
 
-    # ── visualise ─────────────────────────────
     def visualise(self, solution, title="MTC 5G Tower Placement", filename="towers.png"):
         fig, ax = plt.subplots(figsize=(8, 8))
         gs = self.grid_size
@@ -134,10 +126,7 @@ class Telecom_CSP_Solver:
         plt.close()
         print(f"[Saved] {filename}")
 
-
-# ──────────────────────────────────────────────
 # Test Scenarios
-# ──────────────────────────────────────────────
 scenarios = {
     "Level1_Coastal": [(0,0),(1,1),(9,9)],
     "Level2_Highlands": [(2,2),(2,3),(3,2),(3,3),(7,8),(8,7),(8,8)],
