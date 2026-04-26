@@ -7,9 +7,6 @@ from tkinter import messagebox
 from tictactoe import (initial_state, player, actions, result,
                        winner, terminal, utility, minimax, X, O, EMPTY)
 
-# ──────────────────────────────────────────────
-# Colour palette
-# ──────────────────────────────────────────────
 BG       = "#1a1a2e"
 CELL_BG  = "#16213e"
 X_COLOR  = "#e94560"
@@ -21,13 +18,6 @@ CELL_SIZE = 160
 FONT_MARK = ("Helvetica", 72, "bold")
 FONT_MSG  = ("Helvetica", 22, "bold")
 FONT_BTN  = ("Helvetica", 14, "bold")
-
-class TicTacToeApp:
-    def __init__(self, root):
-        self.root  = root
-        self.root.title("Tic-Tac-Toe  |  Minimax AI")
-        self.root.configure(bg=BG)
-        self.root.resizable(False, False)
 
         self.board      = initial_state()
         self.human      = O     # human is O
@@ -41,7 +31,7 @@ class TicTacToeApp:
         if player(self.board) == self.ai:
             self.root.after(400, self._ai_move)
 
-    # ── UI construction ───────────────────────
+    # UI construction 
     def _build_ui(self):
         self.msg_var = tk.StringVar(value="Your turn  (O)")
         msg_lbl = tk.Label(self.root, textvariable=self.msg_var,
@@ -63,7 +53,7 @@ class TicTacToeApp:
                              command=self._reset)
         self.btn.pack(pady=14)
 
-    # ── draw board ────────────────────────────
+    # draw board
     def _refresh(self):
         self.canvas.delete("all")
         cs = CELL_SIZE
@@ -84,7 +74,7 @@ class TicTacToeApp:
                     self.canvas.create_text(cx, cy, text=mark,
                                             font=FONT_MARK, fill=color)
 
-    # ── click handler ─────────────────────────
+    # click handler
     def _on_click(self, event):
         if self.game_over or player(self.board) != self.human:
             return
@@ -104,7 +94,7 @@ class TicTacToeApp:
             self.msg_var.set("AI is thinking…")
             self.root.after(300, self._ai_move)
 
-    # ── AI move ───────────────────────────────
+    # AI move
     def _ai_move(self):
         if self.game_over:
             return
@@ -116,7 +106,7 @@ class TicTacToeApp:
         if not self.game_over:
             self.msg_var.set("Your turn  (O)")
 
-    # ── check terminal ────────────────────────
+    # check terminal
     def _check_end(self):
         if terminal(self.board):
             self.game_over = True
@@ -126,7 +116,6 @@ class TicTacToeApp:
             else:
                 self.msg_var.set("Game Over:  It's a tie!")
 
-    # ── reset ─────────────────────────────────
     def _reset(self):
         self.board     = initial_state()
         self.game_over = False
@@ -135,8 +124,6 @@ class TicTacToeApp:
         if player(self.board) == self.ai:
             self.root.after(400, self._ai_move)
 
-
-# ──────────────────────────────────────────────
 if __name__ == "__main__":
     root = tk.Tk()
     app  = TicTacToeApp(root)
