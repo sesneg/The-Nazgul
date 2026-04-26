@@ -13,11 +13,11 @@ Due Date	26 April 2026 @ 23:59
 Total Marks	100
 Group Members
 Name	Student Number	GitHub Username
-Member 1		
-Member 2		
-Member 3		
-Member 4		
-Member 5		
+Goerge Jeremia-224018000 
+Willie Ndengu-224036270 
+Grace Urikos-223051764 
+David Hailume-223096709
+Absalom Elindi-223077518
 Project Structure
 ARI711S_Assignment/
 ARI711S_Assignment1.ipynb     # Main Jupyter notebook containing all solutions
