@@ -1,13 +1,9 @@
-import heapq
 import math
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
 
-# ──────────────────────────────────────────────
-# Node class
-# ──────────────────────────────────────────────
 class Node:
     def __init__(self, state, parent=None, action=None, g=0):
         self.state  = state   # (row, col)
@@ -19,9 +15,6 @@ class Node:
         return False          # tie-break for heapq
 
 
-# ──────────────────────────────────────────────
-# Warehouse class
-# ──────────────────────────────────────────────
 class Warehouse:
     def __init__(self, filepath):
         self.walls  = set()
@@ -64,13 +57,11 @@ class Warehouse:
         assert self.start, "No 'A' found in warehouse layout"
         assert self.goal,  "No 'B' found in warehouse layout"
 
-    # ── heuristic ──────────────────────────────
     def heuristic(self, state):
         x1, y1 = state
         x2, y2 = self.goal
         return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
-    # ── neighbors ──────────────────────────────
     def neighbors(self, state):
         r, c = state
         result = []
@@ -82,7 +73,6 @@ class Warehouse:
                 result.append((action, (nr, nc)))
         return result
 
-    # ── solve ──────────────────────────────────
     def solve(self, algorithm="astar"):
         start_node = Node(self.start, g=0)
         h0 = self.heuristic(self.start)
@@ -116,7 +106,6 @@ class Warehouse:
 
         return None, explored   # no path found
 
-    # ── path extraction ────────────────────────
     def _extract_path(self, node):
         path = []
         while node.parent:
@@ -126,7 +115,6 @@ class Warehouse:
         path.reverse()
         return path
 
-    # ── visualise ──────────────────────────────
     def visualise(self, path, explored, filename="warehouse_path.png", title=""):
         path_set = set(path)
         img = np.ones((self.rows, self.cols, 3))
@@ -174,10 +162,6 @@ class Warehouse:
         plt.close()
         print(f"[Saved] {filename}")
 
-
-# ──────────────────────────────────────────────
-# Main
-# ──────────────────────────────────────────────
 if __name__ == "__main__":
     wh = Warehouse("warehouse.txt")
 
