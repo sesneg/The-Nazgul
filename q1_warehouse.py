@@ -1,3 +1,4 @@
+import heapq
 import math
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -84,27 +85,7 @@ class Warehouse:
         explored   = set()
         frontier_states = {self.start}
 
-        while frontier:
-            _, node = heapq.heappop(frontier)
-            frontier_states.discard(node.state)
-
-            if node.state == self.goal:
-                return self._extract_path(node), explored
-
-            if node.state in explored:
-                continue
-            explored.add(node.state)
-
-            for action, next_state in self.neighbors(node.state):
-                if next_state not in explored and next_state not in frontier_states:
-                    g_new = node.g + 1
-                    h_new = self.heuristic(next_state)
-                    p_new = h_new if algorithm == "greedy" else g_new + h_new
-                    child = Node(next_state, parent=node, action=action, g=g_new)
-                    heapq.heappush(frontier, (p_new, child))
-                    frontier_states.add(next_state)
-
-        return None, explored   # no path found
+       
 
     def _extract_path(self, node):
         path = []
