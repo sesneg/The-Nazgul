@@ -19,6 +19,13 @@ FONT_MARK = ("Helvetica", 72, "bold")
 FONT_MSG  = ("Helvetica", 22, "bold")
 FONT_BTN  = ("Helvetica", 14, "bold")
 
+class TicTacToeApp:
+    def __init__(self, root):
+        self.root  = root
+        self.root.title("Tic-Tac-Toe  |  Minimax AI")
+        self.root.configure(bg=BG)
+        self.root.resizable(False, False)
+
         self.board      = initial_state()
         self.human      = O     # human is O
         self.ai         = X     # AI is X
