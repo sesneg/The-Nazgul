@@ -1,14 +1,4 @@
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import copy
 
-
-class Telecom_CSP_Solver:
-    def __init__(self, mountains=None, grid_size=10, num_towers=8):
-        self.grid_size  = grid_size
-        self.num_towers = num_towers
-        self.mountains  = set(mountains) if mountains else set()
-        self.towers     = [f"T{i+1}" for i in range(num_towers)]
 
         # Initial domain: all non-mountain cells
         all_cells = [(r, c) for r in range(grid_size)
