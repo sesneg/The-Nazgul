@@ -20,20 +20,20 @@ Member 4
 Member 5		
 Project Structure
 ARI711S_Assignment/
-├── ARI711S_Assignment1.ipynb     # Main Jupyter notebook containing all solutions
-├── q1_warehouse.py               # Question 1 – Warehouse search algorithms
-├── q2_telecom_csp.py             # Question 2 – Telecom tower CSP solver
-├── tictactoe.py                  # Question 3 – Minimax Tic-Tac-Toe logic
-├── runner.py                     # Question 3 – Tkinter GUI for gameplay
-├── q4_gridworld_SARSA.py         # Question 4 – SARSA Gridworld MDP
-├── warehouse.txt                 # Warehouse layout input file
-├── warehouse_path_greedy.png     # Output – Greedy search visualisation
-├── warehouse_path_astar.png      # Output – A* search visualisation
-├── towers_Level1_Coastal.png     # Output – Level 1 tower placement
-├── towers_Level2_Highlands.png   # Output – Level 2 tower placement
-├── towers_Level3_Brandberg.png   # Output – Level 3 tower placement
-├── gridworld_solution.png        # Output – Value function and policy
-└── README.md                     # Project documentation
+ARI711S_Assignment1.ipynb     # Main Jupyter notebook containing all solutions
+q1_warehouse.py               # Question 1 – Warehouse search algorithms
+ q2_telecom_csp.py             # Question 2 – Telecom tower CSP solver
+tictactoe.py                  # Question 3 – Minimax Tic-Tac-Toe logic
+runner.py                     # Question 3 – Tkinter GUI for gameplay
+q4_gridworld_SARSA.py         # Question 4 – SARSA Gridworld MDP
+ warehouse.txt                 # Warehouse layout input file
+ warehouse_path_greedy.png     # Output – Greedy search visualisation
+ warehouse_path_astar.png      # Output – A* search visualisation
+ towers_Level1_Coastal.png     # Output – Level 1 tower placement
+towers_Level2_Highlands.png   # Output – Level 2 tower placement
+towers_Level3_Brandberg.png   # Output – Level 3 tower placement
+gridworld_solution.png        # Output – Value function and policy
+README.md                     # Project documentation
 Questions Summary
 Question 1 – Search Algorithms: Warehouse Logistics Bot (25 marks)
 
